@@ -5,3 +5,8 @@
 .font-hind {
     font-family: 'Hind Shilighuri', sans-serif;
 }
+
+.active {
+    background-color: #422ad5;
+    color: white;
+}
