@@ -107,11 +107,23 @@
         </div>
     </section>
 
+    <!-- Search Container -->
+    <section class="flex justify-center pt-10">
+        <div class="flex w-full max-w-md">
+            <input id="input-search" type="search" class="flex-grow px-4 py-2 rounded-l-full border border-gray-300 focus:outline-none"
+                placeholder="Search Vocabularies..!" />
+            <button id="btn-search" class="px-4 py-2 bg-[rgba(0,188,255,1)] text-white rounded-r-full">
+                Search
+            </button>
+        </div>
+    </section>
+
     <section id="loader" class="flex justify-center items-center py-10 hidden">
         <span class="loading loading-dots loading-xl"></span>
     </section>
 
-    <section id="word-container" class="bg-gray-100 p-10 max-w-[90%] mx-auto my-16 rounded-3xl grid grid-cols-1 md:grid-cols-3 gap-3">
+    <section id="word-container"
+        class="bg-gray-100 p-10 max-w-[90%] mx-auto my-16 rounded-3xl grid grid-cols-1 md:grid-cols-3 gap-3">
         <div class="text-cente bg-sky-100 col-span-full rounded-xl py-10 space-y-6">
             <p class="font-medium text-xl text-gray-600 text-center">আপনি এখনো কোন Lesson Select করেন নি</p>
             <h2 class="font-bold text-center text-black text-3xl">একটি Lesson Select করুন!</h2>
