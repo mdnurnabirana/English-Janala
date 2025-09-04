@@ -1,3 +1,11 @@
+const createElements = (arr) => {
+    if (!arr || arr.length === 0) {
+        return `<span class="btn">No synonym found</span>`;
+    }
+    const htmlElmts = arr.map((el) => `<span class="btn">${el}</span>`);
+    return htmlElmts.join(" ");
+}
+
 const loadLessons = () => {
     fetch("https://openapi.programming-hero.com/api/levels/all")
         .then((res) => res.json())
@@ -40,7 +48,7 @@ const displayLevelWord = (words) => {
             <p class="font-medium text-xl mt-3">Meaning / Pronunciation</p>
             <h3 class="font-hind font-semibold text-[#374957] text-2xl mt-4">${word.meaning ? word.meaning : "অর্থ পাওয়া যায় নি"} / ${word.pronunciation ? word.pronunciation : "উচ্চারণ পাওয়া যায়নি"}</h3>
             <div class="flex justify-between mt-12">
-                <button onclick="my_modal_5.showModal()" class="bg-[#1A91FF10] px-4 py-3 rounded-lg hover:bg-[#1A91FF80]">
+                <button onclick="loadWordDetail(${word.id})" class="bg-[#1A91FF10] px-4 py-3 rounded-lg hover:bg-[#1A91FF80]">
                     <i class="fa-solid fa-circle-info"></i>
                 </button>
                 <button class="bg-[#1A91FF10] px-4 py-3 rounded-lg hover:bg-[#1A91FF80]">
@@ -65,6 +73,38 @@ const displayLesson = (lessons) => {
         `
         levelContainer.append(btnDiv);
     }
+}
+
+const loadWordDetail = async (id) => {
+    const url = `https://openapi.programming-hero.com/api/word/${id}`;
+    const res = await fetch(url);
+    const details = await res.json();
+    displayWordDetails(details.data);
+}
+
+const displayWordDetails = (detail) => {
+    const detailModal = document.getElementById("word-detail-container");
+    detailModal.innerHTML = `
+        <div>
+            <h2 class="text-2xl font-bold">${detail.word} (<i class="fa-solid fa-microphone-lines"></i>:    ${detail.pronunciation})</h2>
+        </div>
+        <div>
+            <h2 class="text-xl font-bold">Meaning</h2>
+            <p>${detail.meaning}</p>
+        </div>
+        <div>
+            <h2 class="text-xl font-bold">Example</h2>
+            <p>${detail.sentence}</p>
+        </div>
+        <div>
+            <h2 class="text-xl font-bold">সমার্থক শব্দগুলো</h2>
+            <div class="mt-2">
+                ${createElements(detail.synonyms)}
+            </div>
+        </div>
+    `;
+
+    document.getElementById("word_modal").showModal();
 }
 
 loadLessons();
