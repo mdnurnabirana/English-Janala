@@ -7,7 +7,7 @@ It helps users learn new vocabularies by levels, view details, hear pronunciatio
 
 ## 🔗 Live Demo
 
-👉 [English জানালা on GitHub Pages](https://mdnurnabirana.github.io/English-Janala/)
+👉 [English জানালা on GitHub Pages](https://english-learnathon.netlify.app/)
 
 ---
 
