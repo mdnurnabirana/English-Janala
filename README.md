@@ -1,114 +1,118 @@
-# ENGLISH <img width="25px" src="./assets/logo.png" /> JANALA
+# 📘 English জানালা — Learn Vocabularies Easily
+
+An interactive **English learning web app** built with **HTML, TailwindCSS, DaisyUI, and JavaScript**, powered by the **Programming Hero Open API**.
+It helps users learn new vocabularies by levels, view details, hear pronunciations, and even save words.
+
+---
+
+## 🔗 Live Demo
+
+👉 [English জানালা on GitHub Pages](https://mdnurnabirana.github.io/English-Janala/)
+
+---
+
+## 🚀 Features
+
+### 1. Levels & Lessons
+
+* Dynamically fetch and display **all lesson levels** from the API.
+* Highlight **active level buttons** so users can track progress.
+
+### 2. Vocabulary Cards
+
+* Show vocabulary words in a **card format** including:
+
+  * Word
+  * Meaning & Pronunciation
+  * Buttons for **details** and **pronunciation**
+* Handle missing data with fallback messages (Bangla + English).
+
+### 3. Vocabulary Details Modal
+
+* Open a **modal** with detailed information (from API):
+
+  * Word with pronunciation
+  * Example sentence
+  * Synonyms (or fallback text if none found)
+  * "Close" button
+
+### 4. Pronunciation
+
+* Click the **🔊 volume icon** to hear the word using **Web Speech API**.
+* Default language: `en-US` (changeable).
+
+### 5. Search Functionality
+
+* Search any word from **all words API**.
+* Resets active lesson when searching.
+
+### 6. Loading Spinner
+
+* Beautiful spinner shown while fetching words.
+
+### 7. Error & Empty State Handling
+
+* Shows **no word found** UI for invalid/empty lessons.
+* Prevents UI break when `null` or `undefined` values come from API.
 
 ---
 
 ## ⚡ API Endpoints
 
-1. Get ⚡ All Levels
+| Endpoint                                                                                                   | Description           |
+| ---------------------------------------------------------------------------------------------------------- | --------------------- |
+| [https://openapi.programming-hero.com/api/levels/all](https://openapi.programming-hero.com/api/levels/all) | Get all levels        |
+| [https://openapi.programming-hero.com/api/level/{id}](https://openapi.programming-hero.com/api/level/{id}) | Get words by level    |
+| [https://openapi.programming-hero.com/api/word/{id}](https://openapi.programming-hero.com/api/word/{id})   | Get details of a word |
+| [https://openapi.programming-hero.com/api/words/all](https://openapi.programming-hero.com/api/words/all)   | Get all words         |
 
-```bash
-https://openapi.programming-hero.com/api/levels/all
-```
+Example:
 
-1. Get ⚡ Words by Levels <br/>
-   https:// openapi.programming-hero.com/api/level/{id}
-
-```bash
-https://openapi.programming-hero.com/api/level/5
-```
-
-1. Get ⚡ Words Detail <br/>
-   https:// openapi.programming-hero.com/api/word/{id}
-
-```bash
-https://openapi.programming-hero.com/api/word/5
-```
-
-1. Get ⚡ All Words <br/>
-
-```bash
-https://openapi.programming-hero.com/api/words/all
-```
-
-# Work To do
-
-### 1. Show Levels on The UI
-
-- [ ] Show a center-aligned heading as Figma
+[https://openapi.programming-hero.com/api/level/5](https://openapi.programming-hero.com/api/level/5)
+[https://openapi.programming-hero.com/api/word/10](https://openapi.programming-hero.com/api/word/10)
 
 ---
 
-- [ ] Create dynamically generated buttons from **API-01** for each lesson
-- [ ] Lesson Buttons will be displayed on page load
+## 🛠️ Tech Stack
+
+* **Frontend:** HTML5, CSS3, TailwindCSS, DaisyUI
+* **Icons:** FontAwesome
+* **Fonts:** Google Fonts (Poppins, Hind Siliguri)
+* **Logic:** Vanilla JavaScript (ES6+)
+* **API:** Programming Hero Open API
+* **Speech:** Web Speech API (`speechSynthesis`)
 
 ---
 
-### 2. Show Word Cards Based on Level
+## 📂 Project Structure
 
-- [ ] Show a default text that will be displayed in the Vocabulary section initially
-- [ ] on Clicking a Specific Lesson Button Load All the words from **API-02**
-- [ ] Display all words for a selected lesson in a card format, showing:
-
-  - [ ] Word
-  - [ ] Word meaning & pronunciation
-  - [ ] Two buttons with relevant icons as per Figma
-
-- [ ] Show **\*No Word Found** message if no words exist for a lesson
-
----
-
-- [ ] Create functionality to highlight the active lesson button
-
----
-
-### 3. Use Different Color on The Active Level Button
-
-- [ ] After Successfully Loading words of a level , diffirentiate the button so user can understand which button is active
-
-### 4. Vocabulary Details
-
-- [ ] Create functionality to open a modal when clicking the details icon
-- [ ] Data will be load from **API-03**
-- [ ] modal will displays:
-  - [ ] Word with pronunciation
-  - [ ] Example sentence
-  - [ ] Synonyms
-  - [ ] A "Complete Learning" button to close the modal
-
-### 5. Handling Invalid Data
-
-- [ ] avoid displaying falsy values like `undefined` or `null`
-- [ ] display relevant words if no data is found
-
-### 6. Loading Spinner
-
-- [ ] Create a loading spinner that will be display when vocabulary is loading from API
-
-### 7. Implement Search Functionality
-
-- [ ] Take a input Box.
-- [ ] on Changing value It will Search word and show in the UI.
-- [ ] If anyone Do search reset active button
-
-### 8. Save Word Feature
-
-- [ ] in the UI of Card add a button `Heart icon`
-- [ ] on Clicking it. Store the Word in the Saved Box
-- [ ] Show Saved words in a Different Section.
-
-### 9. Speak your Vocabularies
-
-- [ ] Create functionality for voice pronunciation of vocabulary words
-- [ ] Use below function and implement on clicking sound icon
-
-```js
-function pronounceWord(word) {
-  const utterance = new SpeechSynthesisUtterance(word);
-  utterance.lang = "en-EN"; // English
-  window.speechSynthesis.speak(utterance);
-}
+```
+├── index.html        # Main HTML file
+├── styles.css        # Custom styles
+├── scripts/
+│   └── index.js      # All JavaScript functionality
+├── assets/           # Images & logos
+└── README.md         # Project documentation
 ```
 
-For More >> you can explore this implementation 👉 [https://codepen.io/Ferdous-Zihad/pen/PwoJMmJ](https://codepen.io/Ferdous-Zihad/pen/PwoJMmJ)
+---
+
+## 🎯 Future Improvements
+
+* [ ] Add **user authentication** (save progress).
+* [ ] Save favorite words with a **heart button**.
+* [ ] Make it a **PWA (offline support)**.
+* [ ] Support **Bangla pronunciation**.
 
 ---
+
+## 💻 Getting Started
+
+Clone the repository and run it locally:
+
+```
+git clone https://github.com/mdnurnabirana/english-janala.git
+cd english-janala
+```
+
+Then open `index.html` in your browser 🚀
