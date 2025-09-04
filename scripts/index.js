@@ -63,7 +63,7 @@ const displayLevelWord = (words) => {
                 <button onclick="loadWordDetail(${word.id})" class="bg-[#1A91FF10] px-4 py-3 rounded-lg hover:bg-[#1A91FF80]">
                     <i class="fa-solid fa-circle-info"></i>
                 </button>
-                <button class="bg-[#1A91FF10] px-4 py-3 rounded-lg hover:bg-[#1A91FF80]">
+                <button onclick="pronounceWord('${word.word}')" class="bg-[#1A91FF10] px-4 py-3 rounded-lg hover:bg-[#1A91FF80]">
                     <i class="fa-solid fa-volume-high"></i>
                 </button>
             </div>
@@ -137,3 +137,16 @@ document.getElementById("btn-search").addEventListener("click", () => {
         displayLevelWord(filterWords);
     })
 })
+
+
+// Pronunciation Function
+function pronounceWord(text) {
+    if (!text) return;
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "en-US"; 
+    utterance.rate = 1;       
+    utterance.pitch = 1;     
+
+    speechSynthesis.speak(utterance);
+}
